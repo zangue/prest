@@ -45,7 +45,7 @@ if ($rest->failed()) {
 
 ```
 Just as with Pest one can use the createJSON() and createXML() factory methods to
-create JSON and XML-centric versionod Prest.
+create JSON and XML-centric version of Prest.
 
 
 API
