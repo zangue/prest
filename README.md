@@ -36,12 +36,19 @@ if ($rest->succeed()) {
 $rest->reset();
 
 $rest = $rest->url('/delete')
-            ->viaDelete()
-            ->execute();
+    ->viaDelete()
+    ->execute();
 
 if ($rest->failed()) {
     ...
 }
+
+$rest2 = $factory->create('http://base-url.com')
+    ->url('/uri')
+    ->viaGet()
+    ->execute();
+
+...
 
 ```
 Just as with Pest one can use the createJSON() and createXML() factory methods to
@@ -50,3 +57,38 @@ create JSON and XML-centric version of Prest.
 
 API
 ---
+```php
+Prest url (string $value)
+```
+Set the resource URL.
+
+```php
+string getUrl ()
+```
+Returns the resource URL, empty string if not set.
+
+```php
+Prest withHeader (string $key, string $value)
+```
+Adds a header.
+
+```php
+array getHeaders ()
+```
+Returns the request headers, empty array if no headers set.
+
+```php
+Prest contentType (string $value)
+```
+Shortcut: adds Content-Type header.
+
+```php
+Prest data (string $key, string $value)
+```
+Adds request data
+
+```php
+array getData (string $value)
+```
+Returns the request data, empty array if no data set
+
