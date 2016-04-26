@@ -83,12 +83,12 @@ Prest contentType (string $value)
 Shortcut: adds Content-Type header.
 
 ```php
-Prest data (string $key, string $value)
+Prest data (mixed $key, mixed $value)
 ```
 Adds request data
 
 ```php
-array getData (string $value)
+array getData ()
 ```
 Returns the request data, empty array if no data set
 
