@@ -1,0 +1,24 @@
+{
+    "name": "zangue/prest",
+    "description": "A REST client for PHP based on Pest.",
+    "type": "library",
+    "require": {
+        "educoder/pest": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Armand Zangue",
+            "email": "armand@zangue.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Prest": "src/"
+        }
+    }
+}
