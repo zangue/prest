@@ -90,5 +90,55 @@ Adds request data
 ```php
 array getData ()
 ```
-Returns the request data, empty array if no data set
+Returns the request data, empty array if no data set.
 
+```php
+Prest buildHttpQuery ()
+```
+Builds http query from request data.
+
+```php
+boolean succeed ()
+boolean failed()
+```
+Tells if the request was successful/failed.
+
+```php
+string getMessage ()
+```
+Get server message on failure.
+
+```php
+string getResponse ()
+```
+Get server response on success.
+
+```php
+Prest viaGet ()
+Prest Prest viaPost ()
+Prest viaPut ()
+Prest viaPatch ()
+Prest viaHead ()
+Prest viaDelete ()
+```
+Use HTTP GET/POST/PUT/PATCH/HEAD/DELETE method.
+
+```php
+Prest withAuth (string $user, string $pass, string $auth = 'basic')
+```
+Setup authentication. $auth can basic (default) or disgest.
+
+```php
+Prest withProxy (string $host, int $port, [string $user, string $pass])
+```
+Setup proxy.
+
+```php
+Prest function curlOpts (string $option, mixed $value)
+```
+Set cURL option.
+
+```php
+Prest execute ()
+```
+Executes the request.
