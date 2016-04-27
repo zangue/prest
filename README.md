@@ -95,6 +95,12 @@ Prest data (mixed $key, mixed $value)
 Adds request data
 
 ```php
+Prest arrayData (array $data)
+```
+Use this method to pass a prepared array of data. Argument has to be an array else
+nothing will happened!
+
+```php
 array getData ()
 ```
 Returns the request data, empty array if no data were set.
@@ -149,7 +155,7 @@ Return the raised exception in case of failure.
 mixed getResponseBody ()
 ```
 Returns the last response body on success. This method will return an associative array or
-a SimpleXMLElement if the Prest object were created using ```createJSON``` or ```createXML```
+a SimpleXMLElement if the Prest object was created using ```createJSON``` or ```createXML```
 factory method respectively.
 
 ```php
