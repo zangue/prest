@@ -103,32 +103,6 @@ Prest buildHttpQuery ()
 Builds http query from request data.
 
 ```php
-boolean succeed ()
-boolean failed()
-```
-Tells if the request was successful/failed.
-
-```php
-string getMessage ()
-```
-Get server message on failure.
-
-```php
-string getResponse ()
-```
-Get server response on success.
-
-```php
-Prest viaGet ()
-Prest viaPost ()
-Prest viaPut ()
-Prest viaPatch ()
-Prest viaHead ()
-Prest viaDelete ()
-```
-Use HTTP GET/POST/PUT/PATCH/HEAD/DELETE method.
-
-```php
 Prest withCookie (string $name, string $value)
 ```
 Add a cookie.
@@ -152,6 +126,49 @@ Setup proxy.
 Prest function curlOpts (string $option, mixed $value)
 ```
 Set cURL option.
+
+```php
+boolean succeed ()
+boolean failed()
+```
+Tells if the request was successful/failed.
+
+```php
+int getStatus ()
+```
+Get last response status code
+
+```php
+Exception getException ()
+```
+Return the raised exception in case of failure.
+
+```php
+mixed getResponseBody ()
+```
+Returns the last response body on success. This method will return an assocoative array or
+a SimpleXMLElment if the Prest object were create using ```createJSON``` or ```createXML```
+factory method respectively.
+
+```php
+boolean responseHasHeader (string $header)
+```
+Checks if last response has a specific header.
+
+```php
+string getResponseHeader (string $header)
+```
+Returns the last response header (case insensitive) or NULL if not present.
+
+```php
+Prest viaGet ()
+Prest viaPost ()
+Prest viaPut ()
+Prest viaPatch ()
+Prest viaHead ()
+Prest viaDelete ()
+```
+Use HTTP GET/POST/PUT/PATCH/HEAD/DELETE method.
 
 ```php
 Prest execute ()
