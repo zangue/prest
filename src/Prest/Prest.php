@@ -36,8 +36,6 @@ use Pest;
 use PestJSON;
 use Exception;
 
-// TODO - Response headers
-
 class Prest {
 
     /**
@@ -88,16 +86,16 @@ class Prest {
     private $executor;
 
     /**
-     * Server response
-     * @var string
+     * Server response body
+     * @var mixed
      */
-    protected $response = "";
+    protected $responseBody = NULL;
 
     /**
-     * Server response message
-     * @var string
+     * Exception in case of resquest failure
+     * @var null
      */
-    protected $message = "";
+    protected $exception = NULL;
 
     /**
      * Class constructor
@@ -140,8 +138,8 @@ class Prest {
         $this->hasCookies = false;
         $this->ok = false;
         $this->executor = [$this, 'get'];
-        $this->response = "";
-        $this->message = "";
+        $this->responseBody = NULL;
+        $this->exception = NULL;
     }
 
     /**
@@ -248,30 +246,50 @@ class Prest {
     }
 
     /**
-     * Get the server message
-     * @return string
+     * Returns the raised exception in case of failure
+     * @return Exception
      */
-    public function getMessage ()
+    public function getException ()
     {
-        return $this->message;
+        return $this->exception;
     }
 
     /**
-     * Get the server response
+     * Get the last response body
      * @return string
      */
-    public function getResponse ()
+    public function getResponseBody ()
     {
-        return $this->response;
+        return $this->responseBody;
     }
 
     /**
      * Get last response status
      * @return int
      */
-    public function getStatusCode ()
+    public function getResponseStatus ()
     {
         return $this->lastStatus();
+    }
+
+    /**
+     * Detect a response header.
+     * @param string $header
+     * @return boolean
+     */
+    public function responseHasHeader ($header)
+    {
+        return NULL !== $this->rest->lastHeader($header);
+    }
+
+    /**
+     * Return the last response header (case insensitive) or NULL if not present.
+     * @param  string $header
+     * @return string
+     */
+    public function getResponseHeader ($header)
+    {
+        return $this->rest->lastHeader($header);
     }
 
     /**
@@ -282,7 +300,7 @@ class Prest {
     {
         try {
 
-            $this->response = $this->rest->get(
+            $this->responseBody = $this->rest->get(
                 $this->url,
                 $this->data,
                 $this->headers
@@ -293,7 +311,7 @@ class Prest {
         } catch (Exception $e) {
 
             $this->ok = false;
-            $this->message = $e->getMessage();
+            $this->exception = $e;
 
         } finally {
 
@@ -309,7 +327,7 @@ class Prest {
     {
         try {
 
-            $this->response = $this->rest->post(
+            $this->responseBody = $this->rest->post(
                 $this->url,
                 $this->data,
                 $this->headers
@@ -320,7 +338,7 @@ class Prest {
         } catch (Exception $e) {
 
             $this->ok = false;
-            $this->message = $e->getMessage();
+            $this->exception = $e;
 
         } finally {
 
@@ -336,7 +354,7 @@ class Prest {
     {
         try {
 
-            $this->response = $this->rest->put(
+            $this->responseBody = $this->rest->put(
                 $this->url,
                 $this->data,
                 $this->headers
@@ -347,7 +365,7 @@ class Prest {
         } catch (Exception $e) {
 
             $this->ok = false;
-            $this->message = $e->getMessage();
+            $this->exception = $e;
 
         } finally {
 
@@ -363,7 +381,7 @@ class Prest {
     {
         try {
 
-            $this->response = $this->rest->patch(
+            $this->responseBody = $this->rest->patch(
                 $this->url,
                 $this->data,
                 $this->headers
@@ -374,7 +392,7 @@ class Prest {
         } catch (Exception $e) {
 
             $this->ok = false;
-            $this->message = $e->getMessage();
+            $this->exception = $e;
 
         } finally {
 
@@ -390,14 +408,14 @@ class Prest {
     {
         try {
 
-            $this->response = $this->rest->head($this->url);
+            $this->responseBody = $this->rest->head($this->url);
 
             $this->ok = true;
 
         } catch (Exception $e) {
 
             $this->ok = false;
-            $this->message = $e->getMessage();
+            $this->exception = $e;
 
         } finally {
 
@@ -413,7 +431,7 @@ class Prest {
     {
         try {
 
-            $this->response = $this->rest->delete(
+            $this->responseBody = $this->rest->delete(
                 $this->url,
                 $this->headers
             );
@@ -423,7 +441,7 @@ class Prest {
         } catch (Exception $e) {
 
             $this->ok = false;
-            $this->message = $e->getMessage();
+            $this->exception = $e;
 
         } finally {
 
