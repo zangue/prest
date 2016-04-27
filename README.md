@@ -146,8 +146,8 @@ Return the raised exception in case of failure.
 ```php
 mixed getResponseBody ()
 ```
-Returns the last response body on success. This method will return an assocoative array or
-a SimpleXMLElment if the Prest object were create using ```createJSON``` or ```createXML```
+Returns the last response body on success. This method will return an associative array or
+a SimpleXMLElement if the Prest object were created using ```createJSON``` or ```createXML```
 factory method respectively.
 
 ```php
