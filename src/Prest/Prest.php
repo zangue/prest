@@ -266,6 +266,15 @@ class Prest {
     }
 
     /**
+     * Get last response status
+     * @return int
+     */
+    public function getStatusCode ()
+    {
+        return $this->lastStatus();
+    }
+
+    /**
      * Perfom a HTTP GET request
      * @return Prest
      */
