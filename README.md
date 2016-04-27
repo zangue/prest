@@ -26,14 +26,14 @@ $rest = $factory->create()
     ->withHeader('Authorization', 'Basic ' . OAUTH_BASIC))
     ->contentType('application/x-www-form-urlencoded')
     ->accept('application/json')
-    ->data('data1', 'value1')
-    ->data('data2', 'value2')
+    ->data('data1', value1)
+    ->data('data2', value2)
     ->buildHttpQuery()
     ->viaPost()
     ->execute();
 
 if ($rest->succeed()) {
-    var_dump($rest->getResponse);
+    var_dump($rest->getResponseBody());
 } else {
     ...
 }
@@ -45,7 +45,9 @@ $rest = $rest->url('/delete')
     ->execute();
 
 if ($rest->failed()) {
-    ...
+    $e = $rest->getException();
+
+    var_dump($e->getMessage());
 }
 
 $rest2 = $factory->create('http://base-url.com')
