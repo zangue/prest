@@ -211,7 +211,7 @@ class Prest {
     public function buildHttpQuery()
     {
         if (!empty($this->data))
-            http_build_query($this->data);
+            $this->data = http_build_query($this->data);
 
         return $this;
     }
