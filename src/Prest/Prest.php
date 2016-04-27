@@ -195,6 +195,18 @@ class Prest {
     }
 
     /**
+     * Pass all request data in array
+     * @param array $array
+     * @return Prest
+     */
+    public function arrayData ($array)
+    {
+        if (is_array($array))
+            $this->data = $array;
+        return $this;
+    }
+
+    /**
      * Add request data
      * @param string $key
      * @param mixed $value
