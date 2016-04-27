@@ -40,7 +40,7 @@ if ($rest->succeed()) {
 
 $rest->reset();
 
-$rest = $rest->url('/delete')
+$rest = $rest->url('/delete/13')
     ->viaDelete()
     ->execute();
 
