@@ -5,6 +5,11 @@ Prest is a PHP REST client library based on [Pest](https://github.com/educoder/p
 In a nutshell Prest is a wrapper around Pest that let you write RESTful client in
 a more elegant way (imho).
 
+Note
+----
+
+Still in beta.
+
 Installation
 ------------
 
@@ -75,7 +80,7 @@ Adds a header.
 ```php
 array getHeaders ()
 ```
-Returns the request headers, empty array if no headers set.
+Returns the request headers, empty array if no headers were set.
 
 ```php
 Prest contentType (string $value)
@@ -90,7 +95,7 @@ Adds request data
 ```php
 array getData ()
 ```
-Returns the request data, empty array if no data set.
+Returns the request data, empty array if no data were set.
 
 ```php
 Prest buildHttpQuery ()
@@ -122,6 +127,16 @@ Prest viaHead ()
 Prest viaDelete ()
 ```
 Use HTTP GET/POST/PUT/PATCH/HEAD/DELETE method.
+
+```php
+Prest withCookie (string $name, string $value)
+```
+Add a cookie.
+
+```php
+array getCookies ()
+```
+Returns array of cookies or empty array if no cookies were added to the request.
 
 ```php
 Prest withAuth (string $user, string $pass, string $auth = 'basic')
