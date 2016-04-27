@@ -115,7 +115,7 @@ Get server response on success.
 
 ```php
 Prest viaGet ()
-Prest Prest viaPost ()
+Prest viaPost ()
 Prest viaPut ()
 Prest viaPatch ()
 Prest viaHead ()
