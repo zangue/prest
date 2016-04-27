@@ -71,6 +71,17 @@ class Prest {
     protected $ok = false;
 
     /**
+     * Request Cookies
+     * @var array
+     */
+    protected $cookies = array();
+
+    /**
+     * @var boolean
+     */
+    protected $hasCookies = false;
+
+    /**
      * The choosen request executor
      * @var array
      */
@@ -125,6 +136,8 @@ class Prest {
         $this->url = "";
         $this->headers = array();
         $this->data = array();
+        $this->cookies = array();
+        $this->hasCookies = false;
         $this->ok = false;
         $this->executor = [$this, 'get'];
         $this->response = "";
@@ -470,6 +483,28 @@ class Prest {
     }
 
     /**
+     * Add cookie to request
+     * @param  string $name
+     * @param  string $value
+     * @return Prest
+     */
+    public function withCookie ($name, $value)
+    {
+        $this->hasCookies = true;
+        $this->cookies[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Returns set cookies
+     * @return array
+     */
+    public function getCookies ()
+    {
+        return $this->cookies;
+    }
+
+    /**
      * Setup authentication
      * @param string $user
      * @param string $pass
@@ -508,12 +543,19 @@ class Prest {
         return $this;
     }
 
+    private function priorExecute ()
+    {
+        if ($this->hasCookies)
+            $this->rest->setupCookies($this->cookies);
+    }
+
     /**
      * Perform the request
      * @return Prest
      */
     public function execute ()
     {
+        $this->priorExecute();
         return call_user_func($this->executor);
     }
 
