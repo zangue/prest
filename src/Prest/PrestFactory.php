@@ -6,7 +6,7 @@
  * @author      Armand Zangue <armand@zangue.com>
  * @copyright   (C) 2016 Armand Zangue
  * @link        https://github.com/zangue/prest
- * @version     0.1
+ * @version     1.0.0
  * @package     Prest
  *
  * MIT LICENSE
