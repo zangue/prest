@@ -1,10 +1,9 @@
 {
     "name": "zangue/prest",
-    "description": "A REST client for PHP based on Pest.",
     "type": "library",
-    "require": {
-        "educoder/pest": "^1.0"
-    },
+    "description": "A REST client for PHP based on Pest.",
+    "keywords": ["rest", "php", "prest", "pest", "client", "api", "client"],
+    "homepage": "https://github.com/zangue/prest",
     "license": "MIT",
     "authors": [
         {
@@ -12,13 +11,13 @@
             "email": "armand@zangue.com"
         }
     ],
-    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.0",
+        "educoder/pest": "^1.0"
+    },
     "autoload": {
         "psr-0": {
             "Prest": "src/"
         }
-    },
-    "require-dev": {
-        "educoder/pest": "^1.0"
     }
 }
