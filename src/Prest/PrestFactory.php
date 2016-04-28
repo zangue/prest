@@ -31,10 +31,9 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Prest
+namespace Prest;
 
-//use Prest;
-require_once 'Prest.php';
+use Prest\Prest;
 
 class PrestFactory {
 
