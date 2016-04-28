@@ -5,14 +5,21 @@ Prest is a PHP REST client library based on [Pest](https://github.com/educoder/p
 In a nutshell Prest is a wrapper around Pest that let you write RESTful client in
 a more elegant way (imho).
 
-Note
-----
-
-Still in beta.
-
 Installation
 ------------
+Via composer cli:
+```sh
+composer require zangue/prest
+```
 
+or in your composer.json file:
+```
+{
+    "require": {
+        "zangue/prest": "1.0.0"
+    }
+}
+```
 
 Basic Usage
 -----------
