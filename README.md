@@ -106,11 +106,6 @@ array getData ()
 Returns the request data, empty array if no data were set.
 
 ```php
-Prest buildHttpQuery ()
-```
-Builds http query from request data.
-
-```php
 Prest withCookie (string $name, string $value)
 ```
 Add a cookie.

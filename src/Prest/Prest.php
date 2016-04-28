@@ -140,6 +140,8 @@ class Prest {
         $this->executor = [$this, 'get'];
         $this->responseBody = NULL;
         $this->exception = NULL;
+
+        return $this;
     }
 
     /**
@@ -225,18 +227,6 @@ class Prest {
     public function getData ()
     {
         return $this->data;
-    }
-
-    /**
-     * Utility function to build http query from request data
-     * @return string
-     */
-    public function buildHttpQuery()
-    {
-        if (!empty($this->data))
-            $this->data = http_build_query($this->data);
-
-        return $this;
     }
 
     /**
