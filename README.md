@@ -35,7 +35,6 @@ $rest = $factory->create()
     ->accept('application/json')
     ->data('data1', value1)
     ->data('data2', value2)
-    ->buildHttpQuery()
     ->viaPost()
     ->execute();
 
