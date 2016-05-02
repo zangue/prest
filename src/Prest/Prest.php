@@ -271,7 +271,7 @@ class Prest {
      */
     public function getResponseStatus ()
     {
-        return $this->lastStatus();
+        return $this->rest->lastStatus();
     }
 
     /**
